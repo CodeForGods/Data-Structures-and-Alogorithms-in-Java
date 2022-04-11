@@ -1,0 +1,53 @@
+import java.util.Arrays;
+
+class Node{
+    int data;
+    Node next;
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+
+
+}
+
+public class Solution {
+    public Node PushDataAtBeginning(Node head,int data){
+            Node newNode = new Node(data);
+            Node team = head;
+            head = newNode;
+            newNode.next = team;
+            return head;
+
+    }
+    public void printNodes(Node head){
+        Node current = head;
+        while(current!=null){
+            System.out.println(current.data+"-");
+            current = current.next;
+        }
+    }
+
+    public Node PoppingFirstElementFromLinkedList(Node head){
+        Node temp = head;
+        head = head.next;
+        temp.next= null;
+        return head;
+
+    }
+
+    public static void main(String[] args) {
+      Node firstNode  = new Node(1);
+      Node head = firstNode;
+      head.next = new Node(2);
+      head.next.next = new Node(3);
+      Solution ss = new Solution();
+      System.out.println("Nodes After pushing data");
+      Node pushedHead =ss.PushDataAtBeginning(head,0);
+      ss.printNodes(pushedHead);
+      System.out.println("Nodes After Popping data");
+      Node poppedHead = ss.PoppingFirstElementFromLinkedList(pushedHead);
+      ss.printNodes(poppedHead);
+
+    }
+}
